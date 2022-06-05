@@ -5,7 +5,9 @@ int main()
 {
     // INPUT AND OUTPUT
     // string s;
+    // Both of them are correct methods to take input of a string
     // getline(cin, s);
+    // cin>>s;
     // cout << s;
 
     // CONCATENATION (USING APPEND)
@@ -65,11 +67,9 @@ int main()
     // cout << s << endl;
 
     // SIZE OF A STRING
-    // The size() function is consistent with other STL containers
-    // (like vector, map, etc.) and length() is consistent with most
-    // peoples intuitive notion of character strings like a word, sentence
-    // or paragraph. We say a paragraph's length not its size, so length()
-    // is to make things more readable.
+    // The size() function is consistent with other STL containers (like vector, map, etc.) and length() is consistent with most
+    // peoples intuitive notion of character strings like a word, sentence or paragraph. We say a paragraph's length not its size,
+    // so length() is to make things more readable.
     // string s = "Hello user";
     // cout << s.size()<< endl;
     // for (int i = 0; i < s.length(); i++)
