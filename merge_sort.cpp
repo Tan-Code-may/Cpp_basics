@@ -1,6 +1,34 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void merge(int ar[],int l,int mid,int r);
+void mergeSort(int ar[],int l,int r);
+
+int main()
+{
+    int n;
+    printf("Enter the number of elements in the array\n");
+    scanf("%d", &n);
+
+    int *ar = (int *)malloc(n * sizeof(int));
+    printf("Enter the elements of the array\n");
+    for (int i = 0; i < n; ++i)
+        scanf("%d", &ar[i]);
+
+    //bubbleSort(ar, n);
+    // selectionSort(ar, n);
+    mergeSort(ar, 0, n-1);
+    // insertionSort(ar);
+    // quickSort(ar);
+
+    printf("Sorted Array-\n");
+    for (int i = 0; i < n; i++)
+        printf("%d ", ar[i]);
+    printf("\n");
+
+    return 0;
+}
+
 void merge(int ar[],int l,int mid,int r)
 {
 	int n1=mid-l+1,n2=r-mid;
@@ -36,29 +64,4 @@ void mergeSort(int ar[],int l,int r)
 	mergeSort(ar,l,mid);
 	mergeSort(ar,mid+1,r);
 	merge(ar,l,mid,r);
-}
-
-int main()
-{
-    int n;
-    printf("Enter the number of elements in the array\n");
-    scanf("%d", &n);
-
-    int *ar = (int *)malloc(n * sizeof(int));
-    printf("Enter the elements of the array\n");
-    for (int i = 0; i < n; ++i)
-        scanf("%d", &ar[i]);
-
-    //bubbleSort(ar, n);
-    // selectionSort(ar, n);
-    mergeSort(ar, 0, n-1);
-    // insertionSort(ar);
-    // quickSort(ar);
-
-    printf("Sorted Array-\n");
-    for (int i = 0; i < n; i++)
-        printf("%d ", ar[i]);
-    printf("\n");
-
-    return 0;
 }
