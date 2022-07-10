@@ -4,8 +4,6 @@
 void bubbleSort(int *ar, int n);
 void selectionSort(int *ar, int n);
 void insertionSort(int *ar, int n);
-void mergeSort(int *ar, int n);
-void quickSort(int *ar, int n);
 
 int main()
 {
@@ -20,9 +18,7 @@ int main()
 
     bubbleSort(ar, n);
     //selectionSort(ar, n);
-    // mergeSort(ar);
     // insertionSort(ar);
-    // quickSort(ar);
 
     printf("Sorted Array-\n");
     for (int i = 0; i < n; i++)
