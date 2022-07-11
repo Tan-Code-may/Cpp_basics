@@ -93,23 +93,82 @@ bool vis[N];
 // 	return 0;
 // }
 
+// FINDING CONNECTED COMPONENTS IN A GRAPH
+// vector<vector<int>> cc; // to store connected components
+// vector<int> currentcc;
 
-vector<vector<int>> cc; // to store connected components
-vector<int> currentcc;
+// void dfs(int vertex)
+// {
+//     vis[vertex] = 1;
 
-void dfs(int vertex)
+//     // Pushing the nodes in a vector where it's cc are present
+//     currentcc.push_back(vertex);
+
+//     for (int child : g[vertex])
+//     {
+//         if (vis[child])
+//             continue;
+//         dfs(child);
+//     }
+// }
+
+// int main()
+// {
+//     int n, e;
+//     cin >> n >> e;
+
+//     // Formation of Adjacency list to store a graph
+//     for (int i = 0; i < e; i++)
+//     {
+//         int a, b;
+//         cin >> a >> b;
+//         g[a].push_back(b);
+//         g[b].push_back(a);
+//     }
+
+//     // Accessing all the nodes and checking whether they are traversed or not
+//     for (int i = 1; i <= n; i++)
+//     {
+//         if (vis[i])
+//             continue;
+
+//         // Clearing the previous vector, storing cc to store new
+//         currentcc.clear();
+
+//         // Running dfs for new cc
+//         dfs(i);
+
+//         // Pushing the cc in the vector storing connected components
+//         cc.push_back(currentcc);
+//     }
+
+//     cout << cc.size() << "\n";
+//     for (auto currentcc : cc)
+//     {
+//         for (auto vertex : currentcc)
+//             cout << vertex << " ";
+//         cout << "\n";
+//     }
+
+//     return 0;
+// }
+
+// FINDING WHETHER A CYCLE IS PRESENT IN A GRAPH OR NOT
+bool dfs(int vertex, int parent)
 {
     vis[vertex] = 1;
 
-    // Pushing the nodes in a vector where it's cc are present
-    currentcc.push_back(vertex);
-
+    bool loopExists = false;
     for (int child : g[vertex])
     {
-        if (vis[child])
+        if (vis[child] == 1 && child == parent)
             continue;
-        dfs(child);
+        if (vis[child])
+            return true;
+        loopExists = dfs(child, vertex);
     }
+
+    return loopExists;
 }
 
 int main()
@@ -126,30 +185,20 @@ int main()
         g[b].push_back(a);
     }
 
+    bool loopExists = false;
+
     // Accessing all the nodes and checking whether they are traversed or not
     for (int i = 1; i <= n; i++)
     {
         if (vis[i])
             continue;
-
-        // Clearing the previous vector, storing cc to store new
-        currentcc.clear();
-
-        // Running dfs for new cc
-        dfs(i);
-
-        // Pushing the cc in the vector storing connected components
-        cc.push_back(currentcc);
+        if (dfs(i, 0))
+        {
+            loopExists = true;
+            break;
+        }
     }
-
-    cout << cc.size() << "\n";
-    for (auto currentcc : cc)
-    {
-        for (auto vertex : currentcc)
-            cout << vertex << " ";
-        cout << "\n";
-    }
+    cout << loopExists << "\n";
 
     return 0;
 }
-
