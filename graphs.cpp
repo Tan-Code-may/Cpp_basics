@@ -63,32 +63,93 @@ bool vis[N];
 //     return 0;
 // }
 
+// void dfs(int vertex)
+// {
+// 	vis[vertex]= true;
+// 	cout<<vertex<<" ";
+// 	for(int child: g[vertex])
+// 	{
+// 		if(vis[child])
+// 			continue;
+// 		dfs(child);
+// 	}
+// 	// Time complexity- O(n+e)
+// }
+
+// // DFS traversal
+// int main()
+// {
+// 	int n,m;
+// 	cin>>n>>m;
+
+// 	for(int i=0;i<m;i++)
+// 	{
+// 		int v1,v2;
+// 		cin>>v1>>v2;
+// 		g[v1].push_back(v2);
+// 		g[v2].push_back(v1);
+// 	} 
+// 	dfs(1);
+// 	return 0;
+// }
+
+
+vector<vector<int>> cc; // to store connected components
+vector<int> currentcc;
+
 void dfs(int vertex)
 {
-	vis[vertex]= true;
-	cout<<vertex<<" ";
-	for(int child: g[vertex])
-	{
-		if(vis[child])
-			continue;
-		dfs(child);
-	}
-	// Time complexity- O(n+e)
+    vis[vertex] = 1;
+
+    // Pushing the nodes in a vector where it's cc are present
+    currentcc.push_back(vertex);
+
+    for (int child : g[vertex])
+    {
+        if (vis[child])
+            continue;
+        dfs(child);
+    }
 }
 
-// DFS traversal
 int main()
 {
-	int n,m;
-	cin>>n>>m;
+    int n, e;
+    cin >> n >> e;
 
-	for(int i=0;i<m;i++)
-	{
-		int v1,v2;
-		cin>>v1>>v2;
-		g[v1].push_back(v2);
-		g[v2].push_back(v1);
-	} 
-	dfs(1);
-	return 0;
+    // Formation of Adjacency list to store a graph
+    for (int i = 0; i < e; i++)
+    {
+        int a, b;
+        cin >> a >> b;
+        g[a].push_back(b);
+        g[b].push_back(a);
+    }
+
+    // Accessing all the nodes and checking whether they are traversed or not
+    for (int i = 1; i <= n; i++)
+    {
+        if (vis[i])
+            continue;
+
+        // Clearing the previous vector, storing cc to store new
+        currentcc.clear();
+
+        // Running dfs for new cc
+        dfs(i);
+
+        // Pushing the cc in the vector storing connected components
+        cc.push_back(currentcc);
+    }
+
+    cout << cc.size() << "\n";
+    for (auto currentcc : cc)
+    {
+        for (auto vertex : currentcc)
+            cout << vertex << " ";
+        cout << "\n";
+    }
+
+    return 0;
 }
+
