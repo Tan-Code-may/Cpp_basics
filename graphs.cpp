@@ -154,30 +154,85 @@ bool vis[N];
 // }
 
 // FINDING WHETHER A CYCLE IS PRESENT IN A GRAPH OR NOT
-bool dfs(int vertex, int parent)
-{
-    vis[vertex] = 1;
+// bool dfs(int vertex, int parent)
+// {
+//     vis[vertex] = 1;
 
-    bool loopExists = false;
+//     bool loopExists = false;
+//     for (int child : g[vertex])
+//     {
+//         if (vis[child] == 1 && child == parent)
+//             continue;
+//         if (vis[child])
+//             return true;
+//         loopExists = dfs(child, vertex);
+//     }
+
+//     return loopExists;
+// }
+
+// int main()
+// {
+//     int n, e;
+//     cin >> n >> e;
+
+//     // Formation of Adjacency list to store a graph
+//     for (int i = 0; i < e; i++)
+//     {
+//         int a, b;
+//         cin >> a >> b;
+//         g[a].push_back(b);
+//         g[b].push_back(a);
+//     }
+
+//     bool loopExists = false;
+
+//     // Accessing all the nodes and checking whether they are traversed or not
+//     for (int i = 1; i <= n; i++)
+//     {
+//         if (vis[i])
+//             continue;
+//         if (dfs(i, 0))
+//         {
+//             loopExists = true;
+//             break;
+//         }
+//     }
+//     cout << loopExists << "\n";
+
+//     return 0;
+// }
+
+// ACCESSING DEPTH AND HEIHGT OF A NODE IN A TREE USING DFS FOR A TREEE
+// Arrays for storing height and depth
+int height[N], depth[N]; 
+
+// DFS for a tree
+void dfs(int vertex, int parent = 0)
+{
+    // Default value of parent is 0, if nothing is specified 0 will be the argument
     for (int child : g[vertex])
     {
-        if (vis[child] == 1 && child == parent)
+        if (child == parent)
             continue;
-        if (vis[child])
-            return true;
-        loopExists = dfs(child, vertex);
-    }
 
-    return loopExists;
+        // Depth for a node is defined before entering that node with the help of it's parent node.
+        depth[child] = depth[vertex] + 1;
+
+        dfs(child, vertex);
+
+        // Height of a vertex/parent is defined after exiting that node with the help of the height of it's child with max height.
+        height[vertex] = max(height[vertex], height[child] + 1);
+    }
 }
 
 int main()
 {
-    int n, e;
-    cin >> n >> e;
+    int n;
+    cin >> n;
 
-    // Formation of Adjacency list to store a graph
-    for (int i = 0; i < e; i++)
+    // Formation of Adjacency list to store the tree
+    for (int i = 0; i < n - 1; i++)
     {
         int a, b;
         cin >> a >> b;
@@ -185,20 +240,9 @@ int main()
         g[b].push_back(a);
     }
 
-    bool loopExists = false;
+    dfs(1);
 
-    // Accessing all the nodes and checking whether they are traversed or not
-    for (int i = 1; i <= n; i++)
-    {
-        if (vis[i])
-            continue;
-        if (dfs(i, 0))
-        {
-            loopExists = true;
-            break;
-        }
-    }
-    cout << loopExists << "\n";
-
+    for (int i = 1; i <= n; ++i)
+        cout << depth[i] << " " << height[i] << "\n";
     return 0;
 }
