@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// In C++ STL, sort() function is present, which is the best sorting algorithm known as Inbuilt sort.
+// This sorting algorithm is a combination of three algorithms, namely quick sort, heap sort and insertion sort.
+// The TC of inbuilt sort is O( nlog(n) ).
+// For arrays- sort(ar, ar+n), For vectors- sort(v.begin(), v.end()).
+
 void bubbleSort(int *ar, int n);
 void selectionSort(int *ar, int n);
 void insertionSort(int *ar, int n);
