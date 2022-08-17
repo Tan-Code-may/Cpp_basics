@@ -9,13 +9,13 @@ int size[N];
 // 2. find: determines the parent of a given node.
 // 3. Union: connects root nodes of two given 'connected components'.
 
-void make(int n)
+void make(int n) // Intializing each individual element
 {
     parent[n] = n;
     size[n] = 1;
 }
 
-int find(int n)
+int find(int n) //Finding the parent of an individual element
 {
     if (parent[n] == n)
         return n;
@@ -23,7 +23,7 @@ int find(int n)
     return parent[n] = find(parent[n]);
 }
 
-void Union(int a, int b)
+void Union(int a, int b) //Joining two different groups
 {
     a = find(a);
     b = find(b);
