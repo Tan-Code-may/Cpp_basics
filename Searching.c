@@ -3,6 +3,17 @@
 int linearSearch(int ar[], int n, int x);
 int binarySearch(int ar[], int n, int x);
 
+// Some C++ STL functions based on binary search-
+
+// Inbuilt binary search algo in STL: bool x= binary_search(ar,ar+n,4);
+
+// To find lower bound in an array (if an element is present then it's index or just greater than that element's index)-
+// int ind= lower_bound(ar,ar+n,val) - ar; (for an array)
+// int ind= lower_bound(v.begin(),v.end(),val) - v.begin(); (for a vector)
+
+// To find upper bound in an array (just greater than the given element's index)-
+// int ind= upper_bound(ar,ar+n,val) - ar;
+
 int main()
 {
     int n;
