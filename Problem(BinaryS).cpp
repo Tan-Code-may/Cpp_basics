@@ -30,7 +30,8 @@ int j;
 #define speed ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 bool perfectSqr(int n) {if(floor(sqrt(n))==ceil(sqrt(n))) return true; else return false;}
 
-//Problem link: https://www.youtube.com/watch?v=gYmWHvRHu-s&list=PLgUwDviBIf0qYbL4TBaEWgb-ljVdhkM7R&index=8
+// Problem link: https://www.youtube.com/watch?v=gYmWHvRHu-s&list=PLgUwDviBIf0qYbL4TBaEWgb-ljVdhkM7R&index=8
+// Binary Search Min-Max problem.
 
 ll solve()
 {
