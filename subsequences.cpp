@@ -31,7 +31,7 @@ int j;
 bool perfectSqr(int n) {if(floor(sqrt(n))==ceil(sqrt(n))) return true; else return false;}
 
 // // 1. Printing all the subsequences of an array using recursion.
-// // TC- O(2^N)
+// // TC- O(K*2^K)
 
 // vi ans;
 // void solve(int ind,int n, vi &v)
@@ -69,7 +69,7 @@ bool perfectSqr(int n) {if(floor(sqrt(n))==ceil(sqrt(n))) return true; else retu
 // }
 
 // 2. Printing only the subsequences which have the given sum. (All of them)
-// TC: O(2^N)
+// TC: O(K*2^K)
 
 // vi ans;
 // int sum=0;
