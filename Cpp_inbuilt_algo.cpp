@@ -23,14 +23,6 @@ int main()
 	// Both max and min functions returns a pointer, hence we
 	// need to dereference them in order to print them.
 
-	int sum = accumulate(v.begin(), v.end(), 0);
-	cout<<sum<<"\n";
-	// Here last argument specifies the initial sum
-
-	int ct = count(v.begin(), v.end(), 2);
-	cout<<ct<<"\n";
-	// Here last argument specifies the value whose count is needed.
-
 	auto it = find(v.begin(), v.end(), 9);
 	if(it != v.end())
 		cout<<*it<<"\n";
