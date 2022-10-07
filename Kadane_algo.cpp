@@ -69,6 +69,7 @@ int better_solve(vi &v)
 
 // Best Approach (Kadane's Algorithm)
 // TC: O(N)
+// Used only when there is atleast one non-negative integer in the array.
 int kadane_solve(vi &v)
 {	
 	int n=v.size();
